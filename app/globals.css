@@ -1,8 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;600;700&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Pixel Love Color Palette */
+  --pixel-pink: #FFB3BA;
+  --pixel-peach: #FFCCB6;
+  --pixel-cream: #FFF4E6;
+  --pixel-rose: #FFD4D8;
+  --pixel-coral: #FFA69E;
+  --pixel-lavender: #E4C1D9;
+  --pixel-mint: #D4E4D4;
+  --pixel-text: #5D4E60;
+  --pixel-text-light: #8B7D8E;
+  --pixel-bg: #FFF9F5;
+  
+  /* Fonts */
+  --pixel-font: 'Press Start 2P', monospace;
+  --body-font: 'Nunito', var(--font-geist-sans), system-ui, sans-serif;
+  
+  /* Font sizes - Pixel font */
+  --pixel-xs: 10px;
+  --pixel-sm: 12px;
+  --pixel-md: 14px;
+  --pixel-lg: 16px;
+  --pixel-xl: 20px;
+  --pixel-2xl: 24px;
+  --pixel-3xl: 32px;
+  
+  /* Font sizes - Body font */
+  --body-xs: 12px;
+  --body-sm: 14px;
+  --body-md: 16px;
+  --body-lg: 18px;
+  --body-xl: 20px;
+  
+  /* Line heights */
+  --line-height-tight: 1.4;
+  --line-height-normal: 1.6;
+  --line-height-relaxed: 1.8;
+  --line-height-loose: 2.0;
+  
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  
+  /* Legacy variables for Tailwind compatibility */
+  --background: var(--pixel-bg);
+  --foreground: var(--pixel-text);
 }
 
 @theme inline {
@@ -12,15 +60,104 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  height: 100%;
+  min-height: 100dvh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--pixel-bg);
+  color: var(--pixel-text);
+  font-family: var(--body-font), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+  position: relative;
+}
+
+/* Animations */
+@keyframes idle-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+@keyframes heavy-shake {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  10% { transform: translate(-10px, 0) rotate(-8deg); }
+  20% { transform: translate(10px, 0) rotate(8deg); }
+  30% { transform: translate(-10px, 0) rotate(-8deg); }
+  40% { transform: translate(10px, 0) rotate(8deg); }
+  50% { transform: translate(-10px, 0) rotate(-8deg); }
+  60% { transform: translate(10px, 0) rotate(8deg); }
+  70% { transform: translate(-10px, 0) rotate(-8deg); }
+  80% { transform: translate(10px, 0) rotate(8deg); }
+  90% { transform: translate(-5px, 0) rotate(-4deg); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modal-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes fade-scale-up {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--pixel-cream);
+  border: 2px solid var(--pixel-pink);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--pixel-pink);
+  border: 2px solid var(--pixel-cream);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--pixel-coral);
 }
